@@ -37,7 +37,7 @@ namespace GoldTeam.Data
         {
             modelBuilder
                 .Conventions
-                .Remove<PluralizingTableNameConvention>());
+                .Remove<PluralizingTableNameConvention>();
 
             modelBuilder
             .Configurations
