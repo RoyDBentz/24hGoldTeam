@@ -27,12 +27,13 @@ namespace GoldTeam.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }        
+        }
         public DbSet<Reply> Replies { get; set; }
+        public DbSet<Post> Posts { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -61,34 +62,8 @@ namespace GoldTeam.Data
             HasKey(iur => iur.UserId);
         }
 
-        public DbSet<Post> Posts { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder
-                .Conventions
-                .Remove<PluralizingTableNameConvention>();
-
-            modelBuilder
-                .Configurations
-                .Add(new IdentityUserLoginConfiguration())
-                .Add(new IdentityUserRoleConfiguration());
-        }
     }
 
-    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
-    {
-        public IdentityUserLoginConfiguration()
-        {
-            HasKey(iul => iul.UserId);
-        }
-    }
 
-    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
-    {
-        public IdentityUserRoleConfiguration()
-        {
-            HasKey(iur => iur.UserId);
-        }
-    }
 }

@@ -9,12 +9,8 @@ namespace GoldTeam.Models
 {
     public class ReplyCreate
     {
-        [Required]
-        [MinLength(2, ErrorMessage ="Please use at least 2 character")]
-        [MaxLength(10, ErrorMessage = "Must be 10 or less characters")]
-        public string Title { get; set; }
 
         [MaxLength(400)]
-        public string Content { get; set; }
+        public string Text { get; set; }
     }
 }

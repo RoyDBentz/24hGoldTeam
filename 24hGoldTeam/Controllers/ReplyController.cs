@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using GoldTeam.Models;
+using GoldTeam.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,20 +10,20 @@ using System.Web.Http;
 
 namespace _24hGoldTeam.Controllers
 {
+    [Authorize]
     public class ReplyController : ApiController
     {
-        [Authorize]
-        public class ReplyService CreateReplyService()
+        private ReplyService CreateReplyService()
         {
-            var replyId = Guid.Parse(User.Identity.GetUserId());
-            var replyService = new ReplyService(replyId);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var replyService = new ReplyService(userId);
             return replyService;
         }
 
         public IHttpActionResult Get()
         {
             ReplyService replyService = CreateReplyService();
-            var replies = noteService.GetReplies();
+            var replies = replyService.GetReplies();
             return Ok(replies);
         }
 
@@ -38,10 +40,10 @@ namespace _24hGoldTeam.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Get(reply id)
+        public IHttpActionResult Get(int id)
         {
             ReplyService replyService = CreateReplyService();
-            var note = noteService.GetReplyById;
+            var reply = replyService.GetReplyById(id);
             return Ok(reply);
         }
     }

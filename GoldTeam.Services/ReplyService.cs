@@ -1,4 +1,5 @@
 ﻿using GoldTeam.Data;
+using GoldTeam.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +11,19 @@ namespace GoldTeam.Services
     public class ReplyService
     {
 
-        private readonly Guid _replyId;
+        private readonly Guid _userId;
 
-        public ReplyService(Guid replyId)
+        public ReplyService(Guid userId)
         {
-            _replyId = replyId;
+            _userId = userId;
         }
         public bool CreateReply(ReplyCreate model)
         {
             var entity =
                 new Reply()
                 {
-                    ReplyId = replyId,
-                    Text = model.Title,
-                    Content = model.Text,
+                   
+                    Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
@@ -34,21 +34,21 @@ namespace GoldTeam.Services
             }
         }
         
-        public IEnumerable<ReplyListItem> GetReplies()
+        public IEnumerable<ReplyItem> GetReplies()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Replies
-                        .Where(r => r.ReplyId == _replyId)
+                        .Where(r => r.AuthorId == _userId)
                         .Select(
-                            ref =>
+                            r => 
                                 new ReplyItem
                                 {
                                     ReplyId = r.ReplyId,
                                     Text = r.Text,
-                                    CreatedUtc = ref.CreatedUtc
+                                    CreatedUtc = r.CreatedUtc
                                 }
                     );
                 return query.ToArray();
@@ -61,13 +61,12 @@ namespace GoldTeam.Services
                 var entity =
                     ctx
                         .Replies
-                        .Single(r => r.ReplyId == id && r.RepliesId == _userId);
+                        .Single(r => r.ReplyId == id && r.AuthorId == _userId);
                 return
                     new ReplyDetail
                     {
-                        _replyId = entity.ReplyId,
+                        ReplyId = entity.ReplyId,
                         Text = entity.Text,
-                        Content = entity.Content,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };

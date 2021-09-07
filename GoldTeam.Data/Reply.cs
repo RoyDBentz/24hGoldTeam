@@ -12,9 +12,9 @@ namespace GoldTeam.Data
         [Key]
         public int ReplyId { get; set; }
         [Required]
-        string Text { get; set; }
+        public string Text { get; set; }
         [Required]
-        Guid AuthorId { get; set; }       
+        public Guid AuthorId { get; set; }       
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
