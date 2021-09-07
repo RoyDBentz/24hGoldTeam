@@ -5,19 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoldTeam.Data
+namespace GoldTeam.Models
 {
-    public class Reply
+    public class ReplyItem
     {
-        [Key]
         public int ReplyId { get; set; }
-        [Required]
-        string Text { get; set; }
-        [Required]
-        Guid AuthorId { get; set; }       
+        public string Title { get; set; }
 
-        [Required]
+        [Display(Name ="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
-        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
