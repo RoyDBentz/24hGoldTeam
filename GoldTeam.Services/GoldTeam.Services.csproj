@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -66,10 +67,12 @@
       <Project>{e7afa7c6-41ab-49bf-960f-8961aebe527a}</Project>
       <Name>GoldTeam.Data</Name>
     </ProjectReference>
+
     <ProjectReference Include="..\GoldTeam.Models\GoldTeam.Models.csproj">
       <Project>{76ffb4b7-e629-4358-bd16-8afece945bed}</Project>
       <Name>GoldTeam.Models</Name>
     </ProjectReference>
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
