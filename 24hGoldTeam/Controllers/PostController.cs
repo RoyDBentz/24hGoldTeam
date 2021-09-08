@@ -59,5 +59,14 @@ namespace _24hGoldTeam.Controllers
 
             return Ok("You updated successfuly");
         }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreatePostService();
+
+            if (!service.DeletePost(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }   
 }

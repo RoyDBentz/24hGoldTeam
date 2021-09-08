@@ -71,5 +71,19 @@ namespace GoldTeam.Services
 
             }
         }
+        public bool DeleteComment(int commentId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(c => c.CommentId == commentId && c.AuthorId == _userId);
+
+                ctx.Comments.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
