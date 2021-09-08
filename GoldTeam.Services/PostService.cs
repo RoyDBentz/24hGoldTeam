@@ -65,7 +65,7 @@ namespace GoldTeam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Posts.Single(a =>  a.AuthorId == _userId);
+                var entity = ctx.Posts.Single(a => a.Id == post.Id && a.AuthorId == _userId);
 
                 entity.Title = post.Title;
                 entity.Text = post.Text;
