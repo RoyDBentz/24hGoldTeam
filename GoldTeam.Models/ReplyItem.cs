@@ -14,5 +14,8 @@ namespace GoldTeam.Models
 
         [Display(Name ="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+
+        [Required]
+        public int CommentId { get; set; }
     }
 }

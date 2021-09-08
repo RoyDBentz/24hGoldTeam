@@ -19,5 +19,9 @@ namespace GoldTeam.Data
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
+
+        [Required]
+        public int CommentId { get; set; }
+        public virtual Comment Comment { get; set; }
     }
 }

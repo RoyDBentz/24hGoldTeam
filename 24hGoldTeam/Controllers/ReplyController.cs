@@ -37,7 +37,7 @@ namespace _24hGoldTeam.Controllers
             if (!service.CreateReply(reply))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("You created a reply successfully!");
         }
 
         public IHttpActionResult Get(int id)
@@ -58,6 +58,16 @@ namespace _24hGoldTeam.Controllers
                 return InternalServerError();
 
             return Ok("You updated successfuly");
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateReplyService();
+
+            if (!service.DeleteReply(id))
+                return InternalServerError();
+
+            return Ok();
         }
     }
 }

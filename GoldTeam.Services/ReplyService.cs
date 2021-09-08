@@ -17,13 +17,12 @@ namespace GoldTeam.Services
         {
             _userId = userId;
         }
-        public bool CreateReply(ReplyCreate model)
+        public bool CreateReply(ReplyCreate reply)
         {
             var entity =
                 new Reply()
-                {
-                   
-                    Text = model.Text,
+                {                   
+                    Text = reply.Text,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
@@ -46,7 +45,7 @@ namespace GoldTeam.Services
                             r => 
                                 new ReplyItem
                                 {
-                                    ReplyId = r.ReplyId,
+                                    ReplyId = r.CommentId,
                                     Text = r.Text,
                                     CreatedUtc = r.CreatedUtc
                                 }
@@ -61,11 +60,11 @@ namespace GoldTeam.Services
                 var entity =
                     ctx
                         .Replies
-                        .Single(r => r.ReplyId == id && r.AuthorId == _userId);
+                        .Single(r => r.CommentId == id && r.AuthorId == _userId);
                 return
                     new ReplyDetail
                     {
-                        ReplyId = entity.ReplyId,
+                        ReplyId = entity.CommentId,
                         Text = entity.Text,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
@@ -77,12 +76,27 @@ namespace GoldTeam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Replies.Single(a => a.ReplyId ==reply.ReplyId && a.AuthorId == _userId);
+                var entity = ctx.Replies.Single(r => r.CommentId ==reply.CommentId && r.AuthorId == _userId);
                
                 entity.Text = reply.Text;
 
                 return ctx.SaveChanges() == 1;
 
+            }
+        }
+
+        public bool DeleteReply(int replyId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Replies
+                        .Single(r => r.ReplyId == replyId && r.AuthorId == _userId);
+
+                ctx.Replies.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
 

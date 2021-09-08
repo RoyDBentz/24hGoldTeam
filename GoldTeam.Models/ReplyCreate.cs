@@ -12,5 +12,8 @@ namespace GoldTeam.Models
 
         [MaxLength(400)]
         public string Text { get; set; }
+
+        [Required]
+        public int CommentId { get; set; }
     }
 }
