@@ -59,7 +59,5 @@ namespace _24hGoldTeam.Controllers
 
             return Ok("You updated successfuly");
         }
-    }
-
-   
+    }   
 }

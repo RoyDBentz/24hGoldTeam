@@ -46,5 +46,18 @@ namespace _24hGoldTeam.Controllers
             var reply = replyService.GetReplyById(id);
             return Ok(reply);
         }
+
+        public IHttpActionResult Put(ReplyEdit reply)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateReplyService();
+
+            if (!service.UpdateReply(reply))
+                return InternalServerError();
+
+            return Ok("You updated successfuly");
+        }
     }
 }

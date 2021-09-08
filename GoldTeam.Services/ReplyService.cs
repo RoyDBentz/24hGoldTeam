@@ -73,6 +73,19 @@ namespace GoldTeam.Services
             }
         }
 
+        public bool UpdateReply(ReplyEdit reply)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Posts.Single(a => a.Id ==reply.ReplyId && a.AuthorId == _userId);
+               
+                entity.Text = reply.Text;
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
     }
 
 }

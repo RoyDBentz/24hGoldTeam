@@ -22,7 +22,7 @@ namespace GoldTeam.Services
             var entity = new Comment()
             {
                 AuthorId = _userId,
-                Text = comment.Text,               
+                Text = comment.Text,
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -46,14 +46,14 @@ namespace GoldTeam.Services
             }
         }
 
-        public CommentDetails GetCommentById(int id)
+        public CommentDetail GetCommentById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Comments.Single(a => a.Id == id && a.AuthorId == _userId);
-                return new CommentDetails
+                return new CommentDetail
                 {
-                    Id = entity.Id,                    
+                    Id = entity.Id,
                     Text = entity.Text
                 };
             }
@@ -64,7 +64,7 @@ namespace GoldTeam.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Comments.Single(a => a.AuthorId == _userId);
-                
+
                 entity.Text = comment.Text;
 
                 return ctx.SaveChanges() == 1;
@@ -72,5 +72,4 @@ namespace GoldTeam.Services
             }
         }
     }
-}
 }
