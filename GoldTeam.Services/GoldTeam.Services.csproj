@@ -54,11 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentService.cs" />
+    <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoldTeam.Data\GoldTeam.Data.csproj">
+      <Project>{E7AFA7C6-41AB-49BF-960F-8961AEBE527A}</Project>
+      <Name>GoldTeam.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoldTeam.Models\GoldTeam.Models.csproj">
+      <Project>{76FFB4B7-E629-4358-BD16-8AFECE945BED}</Project>
+      <Name>GoldTeam.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
