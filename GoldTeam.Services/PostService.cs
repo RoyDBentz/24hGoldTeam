@@ -21,7 +21,9 @@ namespace GoldTeam.Services
         {
             var entity = new Post()
             {
+
                 AuthorId = _userId,
+                PostId = post.PostId,
                 Title = post.Title,
                 Text = post.Text
             };

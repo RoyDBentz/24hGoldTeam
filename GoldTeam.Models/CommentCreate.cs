@@ -9,6 +9,8 @@ namespace GoldTeam.Models
 {
     public class CommentCreate
     {
+        [Required]
+        public int PostId { get; set; }
         [MaxLength(400)]
         public string Text { get; set; }
     }

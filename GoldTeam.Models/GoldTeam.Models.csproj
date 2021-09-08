@@ -72,5 +72,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoldTeam.Data\GoldTeam.Data.csproj">
+      <Project>{E7AFA7C6-41AB-49BF-960F-8961AEBE527A}</Project>
+      <Name>GoldTeam.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

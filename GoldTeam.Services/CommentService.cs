@@ -21,6 +21,7 @@ namespace GoldTeam.Services
         {
             var entity = new Comment()
             {
+                PostId = comment.PostId,
                 AuthorId = _userId,
                 Text = comment.Text,
             };
@@ -39,6 +40,7 @@ namespace GoldTeam.Services
                 var query = ctx.Comments.Where(a => a.AuthorId == _userId).Select(a => new CommentListItem
                 {
                     CommentId = a.CommentId,
+                    PostId = a.Post.PostId,
                     Text = a.Text
                 });
 

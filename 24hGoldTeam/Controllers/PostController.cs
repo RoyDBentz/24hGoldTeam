@@ -27,6 +27,7 @@ namespace _24hGoldTeam.Controllers
             return Ok(posts);
         }
 
+
         public IHttpActionResult Post (PostCreate post)
         {
             if (!ModelState.IsValid)
