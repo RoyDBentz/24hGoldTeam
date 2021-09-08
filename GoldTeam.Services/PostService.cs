@@ -39,7 +39,7 @@ namespace GoldTeam.Services
             {
                 var query = ctx.Posts.Where(a => a.AuthorId == _userId).Select(a => new PostListItem
                 {
-                    Id = a.Id,
+                    PostId = a.PostId,
                     Title = a.Title
                 });
 
@@ -51,10 +51,10 @@ namespace GoldTeam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Posts.Single(a => a.Id == id && a.AuthorId == _userId);
+                var entity = ctx.Posts.Single(a => a.PostId == id && a.AuthorId == _userId);
                 return new PostDetails
                 {
-                    Id = entity.Id,
+                    PostId = entity.PostId,
                     Title = entity.Title,
                     Text = entity.Text
                 };
@@ -65,7 +65,7 @@ namespace GoldTeam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Posts.Single(a => a.Id == post.Id && a.AuthorId == _userId);
+                var entity = ctx.Posts.Single(a => a.PostId == post.PostId && a.AuthorId == _userId);
 
                 entity.Title = post.Title;
                 entity.Text = post.Text;

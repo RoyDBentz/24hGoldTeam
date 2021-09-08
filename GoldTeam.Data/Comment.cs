@@ -10,7 +10,7 @@ namespace GoldTeam.Data
     public class Comment
     {
         [Key]
-        public int Id { get; set; }
+        public int CommentId { get; set; }
 
         [Required]
         [MaxLength(200, ErrorMessage = "There are too many characters in this field.")]

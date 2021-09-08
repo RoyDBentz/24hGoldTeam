@@ -8,7 +8,7 @@ namespace GoldTeam.Models
 {
    public class PostListItem
     {
-        public int Id { get; set; }
+        public int PostId { get; set; }
         public string Title { get; set; }
 
     }

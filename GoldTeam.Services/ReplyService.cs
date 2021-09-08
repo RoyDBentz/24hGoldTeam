@@ -77,7 +77,7 @@ namespace GoldTeam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Posts.Single(a => a.Id ==reply.ReplyId && a.AuthorId == _userId);
+                var entity = ctx.Replies.Single(a => a.ReplyId ==reply.ReplyId && a.AuthorId == _userId);
                
                 entity.Text = reply.Text;
 

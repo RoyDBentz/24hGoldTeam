@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -65,11 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoldTeam.Data\GoldTeam.Data.csproj">
-      <Project>{e7afa7c6-41ab-49bf-960f-8961aebe527a}</Project>
+      <Project>{E7AFA7C6-41AB-49BF-960F-8961AEBE527A}</Project>
       <Name>GoldTeam.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\GoldTeam.Models\GoldTeam.Models.csproj">
-      <Project>{76ffb4b7-e629-4358-bd16-8afece945bed}</Project>
+      <Project>{76FFB4B7-E629-4358-BD16-8AFECE945BED}</Project>
       <Name>GoldTeam.Models</Name>
     </ProjectReference>
   </ItemGroup>

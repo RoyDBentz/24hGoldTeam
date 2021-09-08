@@ -38,7 +38,7 @@ namespace GoldTeam.Services
             {
                 var query = ctx.Comments.Where(a => a.AuthorId == _userId).Select(a => new CommentListItem
                 {
-                    Id = a.Id,
+                    CommentId = a.CommentId,
                     Text = a.Text
                 });
 
@@ -50,10 +50,10 @@ namespace GoldTeam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Comments.Single(a => a.Id == id && a.AuthorId == _userId);
+                var entity = ctx.Comments.Single(a => a.CommentId == id && a.AuthorId == _userId);
                 return new CommentDetail
                 {
-                    Id = entity.Id,
+                    CommentId = entity.CommentId,
                     Text = entity.Text
                 };
             }

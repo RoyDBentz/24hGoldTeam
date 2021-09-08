@@ -10,7 +10,7 @@ namespace GoldTeam.Data
     public class Post
     {
         [Key]
-        public int Id { get; set; }
+        public int PostId { get; set; }
         [Required]
         [MaxLength(200, ErrorMessage ="There are too many characters in this field.")]
         public string Title { get; set; }
